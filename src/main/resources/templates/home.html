@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="~{fragments :: head}"></head>
+<header th:replace="~{fragments :: header}"></header>
+<!--<link rel="stylesheet" th:href="@{/path/to/carousel.css}" />-->
+<!--<script th:src="@{/js/carousel.js}" defer="defer"></script>-->
+
+<body data-bs-theme="dark">
+<div class="gradientBg p-3 pt-4">
+
+    <div class="container text-center">
+        <h2 class="mb-3 fst-italic">Welcome to ReSoled!</h2>
+        <!--        <div class="d-grid mt-5 mb-2 mx-auto shadow-lg" width="500">-->
+        <div class="mb-3">
+            <div class="slide">
+                <img alt="" src="../images/colorful-shoes-in-a-row-square.png" width-="500" height="500"
+                     class="mx-auto border rounded-4 border-secondary-subtle border-3 shadow-lg">
+            </div>
+            <div class="slide">
+                <img alt="" src="../images/active-running-shoe.png" width="500" height="500"
+                     class=" border rounded-4 border-secondary-subtle border-3 shadow-lg">
+            </div>
+            <div class="slide">
+                <img alt="" src="../images/purple-green-sneakers.png" width="500" height="500"
+                     class=" border rounded-4 border-secondary-subtle border-3 shadow-lg">
+            </div>
+
+            <div class="slide">
+                <img alt="" src="../images/two-colorful-hightops.png" width="500" height="500"
+                     class=" border rounded-4 border-secondary-subtle border-3 shadow-lg">
+            </div>
+        </div>
+        <button id="prevBtn" class="btn button1 btn-lg shadow-lg ms-4 border border-1 pt-0 fs-1">&#10232;</button>
+        <button id="nextBtn" class="btn button1 btn-lg shadow-lg ms-4 border border-1 border-secondary-subtle pt-0 fs-1">&#10233;</button>
+    </div>
+
+</div>
+
+<script th:src="@{/js/test.js}"></script>
+<th:block th:replace="~{fragments :: endingScripts}"></th:block>
+</body>
+</html>
