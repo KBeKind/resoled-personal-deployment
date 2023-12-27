@@ -18,7 +18,7 @@ package org.launchcode.liftoff.shoefinder.models.dto;
 
         private String zipCode;
 
-        private String distance;
+//        private String distance;
 
         public SearchListingsDTO() {
 
@@ -80,13 +80,13 @@ package org.launchcode.liftoff.shoefinder.models.dto;
             this.zipCode = zipCode;
         }
 
-        public String getDistance() {
-            return distance;
-        }
-
-        public void setDistance(String distance) {
-            this.distance = distance;
-        }
+//        public String getDistance() {
+//            return distance;
+//        }
+//
+//        public void setDistance(String distance) {
+//            this.distance = distance;
+//        }
     }
 
 

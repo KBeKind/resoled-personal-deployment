@@ -45,39 +45,39 @@ public class SearchController {
         model.addAttribute("brandSuggestionsUrl", "http://localhost:8080/api/brandSuggestion");
         model.addAttribute("styleSuggestionsUrl", "http://localhost:8080/api/styleSuggestion");
 
-        //Grab 5 most recurring brands from database
-        List<Object[]> topBrandsData = brandRepository.findPopularBrands();
-        List<String> topBrands = new ArrayList<>();
-
-        //For each brand object, grab the name and store in topBrands
-        for (Object[] brand : topBrandsData) {
-            String brandName = (String) brand[0];
-            topBrands.add(brandName);
-        }
-        //Add topBrands to the model for search.html
-        if (topBrands.size() < 5) {
-            Brand brand = new Brand();
-            model.addAttribute("topBrands", brand.getBrandNames());
-        } else {
-            model.addAttribute("topBrands", topBrands);
-        }
+//        //Grab 5 most recurring brands from database
+//        List<Object[]> topBrandsData = brandRepository.findPopularBrands();
+//        List<String> topBrands = new ArrayList<>();
+//
+//        //For each brand object, grab the name and store in topBrands
+//        for (Object[] brand : topBrandsData) {
+//            String brandName = (String) brand[0];
+//            topBrands.add(brandName);
+//        }
+//        //Add topBrands to the model for search.html
+//        if (topBrands.size() < 5) {
+//            Brand brand = new Brand();
+//            model.addAttribute("topBrands", brand.getBrandNames());
+//        } else {
+//            model.addAttribute("topBrands", topBrands);
+//        }
 
 
         //Grab 5 most recurring styles from database
-        List<Object[]> topStylesData = styleRepository.findPopularStyles();
-        List<String> topStyles = new ArrayList<>();
+//        List<Object[]> topStylesData = styleRepository.findPopularStyles();
+//        List<String> topStyles = new ArrayList<>();
 
         //For each style object, grab the name and store in topStyles
-        for (Object[] style : topStylesData) {
-            String styleName = (String) style[0];
-            topStyles.add(styleName);
-        }
-        if (topStyles.size() < 5) {
-            Style style = new Style();
-            model.addAttribute("topStyles", style.getStyleNames());
-        } else {
-            model.addAttribute("topStyles", topStyles);
-        }
+//        for (Object[] style : topStylesData) {
+//            String styleName = (String) style[0];
+//            topStyles.add(styleName);
+//        }
+//        if (topStyles.size() < 5) {
+//            Style style = new Style();
+//            model.addAttribute("topStyles", style.getStyleNames());
+//        } else {
+//            model.addAttribute("topStyles", topStyles);
+//        }
 
         //Create list of shoe sizes for the model
         List<String> shoeSizeList = SIZE_LIST;

@@ -92,22 +92,22 @@ public class ListingController {
             ShoeListing shoeListing = result.get();
             String zipCode = shoeListing.getUserEntity().getLocation().getZipCode();
 
-            try {
-                GeoApiContext ctx = new GeoApiContext.Builder()
-                        .apiKey(System.getenv("GOOGLE_API_KEY"))
-                        .build();
-
-                GeocodingResult[] results = GeocodingApi.geocode(ctx, zipCode).await();
-                if (results.length > 0) {
-                    latLng = results[0].geometry.location;
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            } catch (ApiException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                GeoApiContext ctx = new GeoApiContext.Builder()
+//                        .apiKey(System.getenv("GOOGLE_API_KEY"))
+//                        .build();
+//
+//                GeocodingResult[] results = GeocodingApi.geocode(ctx, zipCode).await();
+//                if (results.length > 0) {
+//                    latLng = results[0].geometry.location;
+//                }
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            } catch (ApiException e) {
+//                throw new RuntimeException(e);
+//            }
             model.addAttribute("latitude", latLng.lat);
             model.addAttribute("longitude", latLng.lng);
             model.addAttribute("title", shoeListing.getTitle());
@@ -239,7 +239,7 @@ public class ListingController {
         currentSearch.setSearchBrand(searchListingsDTO.getBrand());
         currentSearch.setSearchStyle(searchListingsDTO.getStyle());
         currentSearch.setSearchZipCode(searchListingsDTO.getZipCode());
-        currentSearch.setSearchDistance(searchListingsDTO.getDistance());
+//        currentSearch.setSearchDistance(searchListingsDTO.getDistance());
 
         // saving gender list as a comma separated string
         if (!searchListingsDTO.getGenders().isEmpty()) {
@@ -276,6 +276,10 @@ public class ListingController {
 
     @GetMapping("/listingSearch/page/{pageNumber}")
     public String getOneListingSearchPage(Model model, @PathVariable("pageNumber") int currentPage) throws IOException, InterruptedException, ApiException {
+        String username = SecurityUtility.getSessionUser();
+
+        UserEntity userEntity = userRepository.findByUsernameIgnoreCase(username);
+        model.addAttribute("userEntity", userEntity);
 
 
         List<ShoeListing> allShoeListings = listingService.filterListings();
